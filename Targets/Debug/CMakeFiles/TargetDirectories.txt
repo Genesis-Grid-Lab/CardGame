@@ -1,0 +1,3 @@
+/home/nesmy/Playground/CardGame/Targets/Debug/CMakeFiles/CardGame.dir
+/home/nesmy/Playground/CardGame/Targets/Debug/CMakeFiles/edit_cache.dir
+/home/nesmy/Playground/CardGame/Targets/Debug/CMakeFiles/rebuild_cache.dir

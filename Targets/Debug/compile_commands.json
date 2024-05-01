@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/nesmy/Playground/CardGame/Targets/Debug",
+  "command": "/usr/bin/c++  -I/home/nesmy/Playground/CardGame/include -g -std=gnu++17 -o CMakeFiles/CardGame.dir/src/main.cpp.o -c /home/nesmy/Playground/CardGame/src/main.cpp",
+  "file": "/home/nesmy/Playground/CardGame/src/main.cpp"
+}
+]
