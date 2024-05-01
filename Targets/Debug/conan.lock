@@ -2,8 +2,28 @@
  "graph_lock": {
   "nodes": {
    "0": {
-    "options": "",
+    "options": "fmt:fPIC=True\nfmt:header_only=False\nfmt:shared=False\nfmt:with_fmt_alias=False\nfmt:with_os_api=True\nspdlog:fPIC=True\nspdlog:header_only=False\nspdlog:no_exceptions=False\nspdlog:shared=False\nspdlog:use_std_fmt=False\nspdlog:wchar_filenames=False\nspdlog:wchar_support=False",
+    "requires": [
+     "1"
+    ],
     "path": "../../conanfile.txt",
+    "context": "host"
+   },
+   "1": {
+    "ref": "spdlog/1.12.0",
+    "options": "fPIC=True\nheader_only=False\nno_exceptions=False\nshared=False\nuse_std_fmt=False\nwchar_filenames=False\nwchar_support=False\nfmt:fPIC=True\nfmt:header_only=False\nfmt:shared=False\nfmt:with_fmt_alias=False\nfmt:with_os_api=True",
+    "package_id": "17da8a8753b9f1e2e594e9ec31ee01c6fcb2c8f9",
+    "prev": "0",
+    "requires": [
+     "2"
+    ],
+    "context": "host"
+   },
+   "2": {
+    "ref": "fmt/10.2.1",
+    "options": "fPIC=True\nheader_only=False\nshared=False\nwith_fmt_alias=False\nwith_os_api=True",
+    "package_id": "20da98908a15523bbe9f086a5c57a4bde424a9c0",
+    "prev": "0",
     "context": "host"
    }
   },

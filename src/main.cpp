@@ -1,8 +1,8 @@
-#include <iostream>
+#include "Core/Core.h"
 
 int main()
 {
 
-    std::cout << "Hello World!" << std::endl;
+    INFO("Hello World!");
     return 0;
 }

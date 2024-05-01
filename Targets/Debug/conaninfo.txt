@@ -7,7 +7,7 @@
     os=Linux
 
 [requires]
-
+    spdlog/1.Y.Z
 
 [options]
 
@@ -23,10 +23,22 @@
     os_build=Linux
 
 [full_requires]
-
+    fmt/10.2.1:20da98908a15523bbe9f086a5c57a4bde424a9c0
+    spdlog/1.12.0:17da8a8753b9f1e2e594e9ec31ee01c6fcb2c8f9
 
 [full_options]
-
+    fmt:fPIC=True
+    fmt:header_only=False
+    fmt:shared=False
+    fmt:with_fmt_alias=False
+    fmt:with_os_api=True
+    spdlog:fPIC=True
+    spdlog:header_only=False
+    spdlog:no_exceptions=False
+    spdlog:shared=False
+    spdlog:use_std_fmt=False
+    spdlog:wchar_filenames=False
+    spdlog:wchar_support=False
 
 [recipe_hash]
 
