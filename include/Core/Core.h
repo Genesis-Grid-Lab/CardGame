@@ -45,7 +45,7 @@ public:
     {
 	m_SPD = spdlog::stdout_color_mt("stdout");
 	spdlog::set_level(spdlog::level::trace);
-	spdlog::set_pattern("%^[%T]: [#%t] %v%S");
+	spdlog::set_pattern("%^[%T]: [#%t] %v%$");
     }
 
     inline static SPDLog& Ref()

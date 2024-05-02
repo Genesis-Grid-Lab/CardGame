@@ -1,25 +1,36 @@
 #pragma once
 #include "WindowEvents.h"
+#include <iostream>
 
 class AppWindow
 {
 public:
+    void static testerror( int error, const char *msg ) {
+    std::string s;
+    s = " [" + std::to_string(error) + "] " + msg + '\n';
+    std::cerr << s << std::endl;
+}
+    
     inline AppWindow(EventDispatcher* dispatch, int32_t width, int32_t height, const char* title):
     m_Dispatcher(dispatch)
     {
-	if(glfwInit() != GLFW_TRUE)
+	glfwSetErrorCallback(testerror);
+	if(!glfwInit())
 	{
 	    FATAL("glfwInit() failed!");
 	    exit(EXIT_FAILURE);
 	}
 
-	glfwWindowHint(GLFW_OPENGL_CORE_PROFILE, GLFW_TRUE);
+	//glfwWindowHint(GLFW_OPENGL_CORE_PROFILE, GLFW_TRUE);
+	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
+	glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_NATIVE_CONTEXT_API);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	
 	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, 1);
 
 	auto display = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	INFO("HERE");
 	glfwWindowHint(GLFW_REFRESH_RATE, display->refreshRate);
 	glfwWindowHint(GLFW_GREEN_BITS, display->greenBits);
 	glfwWindowHint(GLFW_BLUE_BITS, display->blueBits);
