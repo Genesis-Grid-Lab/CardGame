@@ -11,6 +11,7 @@
 #include <functional>
 #include <filesystem>
 #include <unordered_map>
+#include <map>
 
 
 
@@ -20,8 +21,19 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 
+//inlcude glew
+#define GLEW_STATIC
+#include <GL/glew.h>
 //include glfw
 #include <GLFW/glfw3.h>
+
+// include glm
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/quaternion.hpp>
+#include <glm/gtx/matrix_decompose.hpp>
+#include <glm/ext/matrix_transform.hpp>
+#include <glm/ext/matrix_clip_space.hpp>
 
 
 class Logger

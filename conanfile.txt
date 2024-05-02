@@ -1,9 +1,13 @@
 [requires]
 spdlog/1.12.0
 glfw/3.3.8
+glm/cci.20230113
+glew/2.2.0
+stb/cci.20230920
 
 [generators]
 cmake
 
 [options]
 glfw:shared=False
+glew:shared=False

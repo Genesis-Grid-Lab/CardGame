@@ -26,7 +26,7 @@ void Application::UpdateScene()
 
 void Application::RenderScene()
 {
-    
+    m_Context->Renderer->Draw();
 }
 
 void Application::StartScene()

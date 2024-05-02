@@ -5,10 +5,10 @@
 if [-d "./CardGame"]; then
     echo "Folder exists."
 else
-    sudo python3 -m venv ./CardGame
-    sudo chmod -R a+rwx ./CardGame
-    source ./CardGame/bin/activate
-    pip install conan==1.61.0
+    #sudo python3 -m venv ./CardGame
+    #sudo chmod -R a+rwx ./CardGame
+    #source ./CardGame/bin/activate
+    #pip install conan==1.61.0
     echo "Created folder"
 fi
 
