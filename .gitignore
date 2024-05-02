@@ -1,3 +1,7 @@
+Targets/
+build/
+CardGame/
+
 # Prerequisites
 *.d
 
