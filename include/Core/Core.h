@@ -35,6 +35,9 @@
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/ext/matrix_clip_space.hpp>
 
+// Resoucre manager
+//#include "ResourceManager.h"
+
 
 class Logger
 {

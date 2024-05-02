@@ -1,7 +1,7 @@
 #pragma once
 #include "Core/Core.h"
-#include "Texture.h"
-#include "Shader.h"
+#include "Graphics/Shader.h"
+#include "Graphics/Texture.h"
 
 class Sprite
 {
