@@ -1,5 +1,0 @@
-#!/bin/bash
-
-cd ./Target/Debug/bin
-
-./CardGame
