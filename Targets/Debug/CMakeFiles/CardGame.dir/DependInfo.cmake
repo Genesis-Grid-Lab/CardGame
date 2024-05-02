@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/nesmy/Playground/CardGame/src/Application.cpp" "CMakeFiles/CardGame.dir/src/Application.cpp.o" "gcc" "CMakeFiles/CardGame.dir/src/Application.cpp.o.d"
   "/home/nesmy/Playground/CardGame/src/main.cpp" "CMakeFiles/CardGame.dir/src/main.cpp.o" "gcc" "CMakeFiles/CardGame.dir/src/main.cpp.o.d"
   )
 

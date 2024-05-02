@@ -1,8 +1,9 @@
-#include "Core/Core.h"
+#include "Application/Application.h"
 
 int main()
 {
-
-    INFO("Hello World!");
+    auto app = new Application();
+    app->RunContext(false);
+    DELETE(app);
     return 0;
 }

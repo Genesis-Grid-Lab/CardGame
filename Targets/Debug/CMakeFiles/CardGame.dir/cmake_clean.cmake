@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/CardGame.dir/src/Application.cpp.o"
+  "CMakeFiles/CardGame.dir/src/Application.cpp.o.d"
   "CMakeFiles/CardGame.dir/src/main.cpp.o"
   "CMakeFiles/CardGame.dir/src/main.cpp.o.d"
   "bin/CardGame"

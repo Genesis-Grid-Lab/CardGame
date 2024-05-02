@@ -20,6 +20,9 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 
+//include glfw
+#include <GLFW/glfw3.h>
+
 
 class Logger
 {
@@ -42,9 +45,29 @@ private:
     SPDLog m_SPD;
 };
 
+template <typename T>
+inline constexpr uint32_t TypeID()
+{
+    return static_cast<uint32_t>(reinterpret_cast<std::uintptr_t>(&typeid(T)));
+}
+
 #define TRACE(...) Logger::Ref()->trace(__VA_ARGS__)
 #define DEBUG(...) Logger::Ref()->debug(__VA_ARGS__)
 #define INFO(...) Logger::Ref()->info(__VA_ARGS__)
 #define WARN(...) Logger::Ref()->warn(__VA_ARGS__)
 #define ERROR(...) Logger::Ref()->error(__VA_ARGS__)
 #define FATAL(...) Logger::Ref()->critical(__VA_ARGS__)
+
+//free allocated memory
+#define DELETE(ptr) if (ptr != nullptr) { delete (ptr); ptr = nullptr;}
+
+// runtime assertion
+#define APP_ASSERT assert
+
+// compile assertion
+#if defined(__clang__) || defined(__gcc__)
+#define APP_STATIC_ASSERT _Static_assert
+#else
+#define APP_STATIC_ASSERT static_assert
+#endif
+

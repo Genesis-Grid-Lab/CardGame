@@ -1,7 +1,12 @@
 [
 {
   "directory": "/home/nesmy/Playground/CardGame/Targets/Debug",
-  "command": "/usr/bin/c++  -I/home/nesmy/Playground/CardGame/include -I/home/nesmy/.conan/data/spdlog/1.12.0/_/_/package/17da8a8753b9f1e2e594e9ec31ee01c6fcb2c8f9/include -I/home/nesmy/.conan/data/fmt/10.2.1/_/_/package/20da98908a15523bbe9f086a5c57a4bde424a9c0/include -g -std=gnu++17 -o CMakeFiles/CardGame.dir/src/main.cpp.o -c /home/nesmy/Playground/CardGame/src/main.cpp",
+  "command": "/usr/bin/c++  -I/home/nesmy/Playground/CardGame/include -I/home/nesmy/.conan/data/spdlog/1.12.0/_/_/package/17da8a8753b9f1e2e594e9ec31ee01c6fcb2c8f9/include -I/home/nesmy/.conan/data/glfw/3.3.8/_/_/package/08f4c711a76082a8ca8e8d4783b15f190b7d8e79/include -I/home/nesmy/.conan/data/fmt/10.2.1/_/_/package/20da98908a15523bbe9f086a5c57a4bde424a9c0/include -g -std=gnu++17 -o CMakeFiles/CardGame.dir/src/Application.cpp.o -c /home/nesmy/Playground/CardGame/src/Application.cpp",
+  "file": "/home/nesmy/Playground/CardGame/src/Application.cpp"
+},
+{
+  "directory": "/home/nesmy/Playground/CardGame/Targets/Debug",
+  "command": "/usr/bin/c++  -I/home/nesmy/Playground/CardGame/include -I/home/nesmy/.conan/data/spdlog/1.12.0/_/_/package/17da8a8753b9f1e2e594e9ec31ee01c6fcb2c8f9/include -I/home/nesmy/.conan/data/glfw/3.3.8/_/_/package/08f4c711a76082a8ca8e8d4783b15f190b7d8e79/include -I/home/nesmy/.conan/data/fmt/10.2.1/_/_/package/20da98908a15523bbe9f086a5c57a4bde424a9c0/include -g -std=gnu++17 -o CMakeFiles/CardGame.dir/src/main.cpp.o -c /home/nesmy/Playground/CardGame/src/main.cpp",
   "file": "/home/nesmy/Playground/CardGame/src/main.cpp"
 }
 ]
