@@ -9,8 +9,11 @@ public:
 
     void Draw();
 
+    void LoadSprite(Sprite* sprite);
+
 private:
     GLFWwindow* m_Window;
     Sprite *sprite;
+    std::vector<Sprite*> m_Sprites;
     int32_t Width, Height;
 };

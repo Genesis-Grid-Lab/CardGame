@@ -3,7 +3,7 @@
 #include "Core/ResourceManager.h"
 
 GraphicsRenderer::GraphicsRenderer(int32_t width, int32_t height, GLFWwindow* window)
-    :m_Window(window), sprite(nullptr),Width(width), Height(height)
+    :m_Window(window),Width(width), Height(height)
 {
     // Init opengl
     if(glewInit() != GLEW_OK)
@@ -22,6 +22,7 @@ GraphicsRenderer::GraphicsRenderer(int32_t width, int32_t height, GLFWwindow* wi
     ResourceManager::GetShader("Sprite").SetMatrix4("projection", projection);
     ResourceManager::LoadTexture("Assets/images/awesomeface.png", true, "face");
     sprite = new Sprite(ResourceManager::GetShader("Sprite"), ResourceManager::GetTexture("face"));
+    LoadSprite(sprite);
     sprite->Position = glm::vec2(200.0f, 200.0f);
     sprite->Size = glm::vec2(300.0f, 400.0f);
     sprite->Rotate = 45.0f;
@@ -30,10 +31,19 @@ GraphicsRenderer::GraphicsRenderer(int32_t width, int32_t height, GLFWwindow* wi
     
 }
 
+void GraphicsRenderer::LoadSprite(Sprite* sprite)
+{
+    m_Sprites.push_back(sprite);
+}
+
 void GraphicsRenderer::Draw()
 {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-    sprite->Draw();
+    for(auto sprite : m_Sprites)
+    {
+	sprite->Draw();
+    }
+	//sprite->Draw();
     glfwSwapBuffers(m_Window);
 }

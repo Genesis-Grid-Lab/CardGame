@@ -3,6 +3,7 @@
 
 #include "Graphics/Texture.h"
 #include "Graphics/Shader.h"
+#include "Graphics/Sprite.h"
 
 class ResourceManager
 {
@@ -10,6 +11,7 @@ public:
     //Resource storage
     static std::map<std::string, Shader> Shaders;
     static std::map<std::string, Texture2D> Textures;
+    static std::map<std::string, Sprite> Sprites;
     // loads a shader program from file loading vertex, fragm (geometry)
     static Shader &LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name);
     // retreive a stored shader
@@ -18,8 +20,17 @@ public:
     static Texture2D &LoadTexture(const char* file, bool alpha, std::string name);
     // retreive a strored texture
     static Texture2D &GetTexture(std::string name);
+    // loads a sprite
+    // static Sprite &LoadSprite(Sprite &sprite, std::string name);
+    // // retreive a stored sprite
+    // static Sprite &GetSprite(std::string name);
     // properly de-allocates all loaded resources
     static void Clear();
+
+    static std::map<std::string, Sprite> &GetSpriteMap()
+	{
+	    return Sprites;
+	}
 private:
     ResourceManager() {}
     // loads and generate a shader from file
