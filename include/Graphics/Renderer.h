@@ -1,5 +1,6 @@
 #pragma once
 #include "Core/Core.h"
+#include "Graphics/Sprite.h"
 
 class GraphicsRenderer
 {
@@ -10,4 +11,6 @@ public:
 
 private:
     GLFWwindow* m_Window;
+    Sprite *sprite;
+    int32_t Width, Height;
 };

@@ -21,7 +21,7 @@ project(CardGame)
 file(GLOB_RECURSE sources ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 file(GLOB_RECURSE headers ${CMAKE_CURRENT_SOURCE_DIR}/inlucde/*.h)
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw)
+#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw)
 
 add_executable(${PROJECT_NAME} ${sources} ${headers})
 
@@ -29,7 +29,7 @@ add_executable(${PROJECT_NAME} ${sources} ${headers})
 #include directories
 target_include_directories(${PROJECT_NAME} PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/include
-  ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw/include
+  #${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw/include
   ${CONAN_INCLUDE_DIRS}
 )
 
@@ -40,6 +40,17 @@ target_link_directories(${PROJECT_NAME} PUBLIC
 
 #link libraries
 target_link_libraries(${PROJECT_NAME} PUBLIC
-  glfw
+  #glfw
   ${CONAN_LIBS}
 )
+
+# copy resources
+if(EXISTS ${CMAKE_SOURCE_DIR}/Assets)
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND 
+        ${CMAKE_COMMAND} -E copy_directory 
+        ${CMAKE_SOURCE_DIR}/Assets
+        ${EXECUTABLE_OUTPUT_PATH}/Assets
+    )
+else()
+    message(WARNING "[WARNING] no Assets directory!")
+endif()

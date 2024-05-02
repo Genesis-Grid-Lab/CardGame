@@ -11,13 +11,13 @@ public:
     static std::map<std::string, Shader> Shaders;
     static std::map<std::string, Texture2D> Textures;
     // loads a shader program from file loading vertex, fragm (geometry)
-    static Shader LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name);
+    static Shader &LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name);
     // retreive a stored shader
-    static Shader GetShader(std::string name);
+    static Shader &GetShader(std::string name);
     // loads a texture from file
-    static Texture2D LoadTexture(const char* file, bool alpha, std::string name);
+    static Texture2D &LoadTexture(const char* file, bool alpha, std::string name);
     // retreive a strored texture
-    static Texture2D GetTexture(std::string name);
+    static Texture2D &GetTexture(std::string name);
     // properly de-allocates all loaded resources
     static void Clear();
 private:
