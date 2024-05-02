@@ -20,8 +20,12 @@ GraphicsRenderer::GraphicsRenderer(int32_t width, int32_t height, GLFWwindow* wi
 				      static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
     ResourceManager::GetShader("Sprite").Use().SetInteger("image", 0);
     ResourceManager::GetShader("Sprite").SetMatrix4("projection", projection);
-    sprite = new Sprite(ResourceManager::GetShader("Sprite"));
     ResourceManager::LoadTexture("Assets/images/awesomeface.png", true, "face");
+    sprite = new Sprite(ResourceManager::GetShader("Sprite"), ResourceManager::GetTexture("face"));
+    sprite->Position = glm::vec2(200.0f, 200.0f);
+    sprite->Size = glm::vec2(300.0f, 400.0f);
+    sprite->Rotate = 45.0f;
+    sprite->Color = glm::vec3(0.0f, 1.0f, 0.0f);
 
     
 }
@@ -30,7 +34,6 @@ void GraphicsRenderer::Draw()
 {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-    sprite->Draw(ResourceManager::GetTexture("face"),
-		 glm::vec2(200.0f, 200.0f), glm::vec2(300.0f, 400.0f), 45.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+    sprite->Draw();
     glfwSwapBuffers(m_Window);
 }

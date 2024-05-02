@@ -6,14 +6,17 @@
 class Sprite
 {
 public:
-    Sprite(Shader &shader);
+    Sprite(Shader &shader, Texture2D &texture);
     ~Sprite();
 
-    void Draw(Texture2D &texture, glm::vec2 position,
-	      glm::vec2 size = glm::vec2(10.0f, 10.0f),
-	      float rotate = 0.0f,
-	      glm::vec3 color = glm::vec3(1.0f));
+    void Draw();
+public:
+    glm::vec2 Position;
+    glm::vec2 Size;
+    float Rotate;
+    glm::vec3 Color;
 private:
+    Texture2D &m_Texture;
     Shader m_Shader;
     unsigned int quadVAO;
 
