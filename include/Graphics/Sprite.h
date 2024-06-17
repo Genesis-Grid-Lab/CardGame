@@ -2,11 +2,12 @@
 #include "Core/Core.h"
 #include "Graphics/Shader.h"
 #include "Graphics/Texture.h"
+//#include "Application/Application.h"
 
 class Sprite
 {
 public:
-    Sprite(Shader &shader, Texture2D &texture);
+  Sprite(Shader &shader, Texture2D &texture, class Application* app);
     ~Sprite();
 
     void Draw();

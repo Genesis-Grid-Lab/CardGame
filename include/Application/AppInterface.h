@@ -105,6 +105,11 @@ public:
 	return m_Context->Window->Handle();
     }
 
+  inline AppContext* GetContext()
+  {
+    return m_Context;
+  }
+
 protected:
     inline virtual void OnUpdate() {}
     inline virtual void OnStart() {}

@@ -1,21 +1,21 @@
-#include "Graphics/Sprite.h"
+#include "Graphics/Background.h"
 #include "Application/Application.h"
 
-Sprite::Sprite(Shader &shader, Texture2D &texture, Application* app)
-    :m_Texture(texture), Position(0.0f), Size(glm::vec2(10.0f, 10.0f)), Rotate(0.0f), Color(glm::vec3(1.0f))
+BackGround::BackGround(Shader &shader, Texture2D &texture, Application* app)
+    :m_Texture(texture), Position(glm::vec2(0.0f, 0.0f)), Size(glm::vec2(1280.0f, 720.0f)), Rotate(0.0f), Color(glm::vec3(1.0f))
 {
     this->m_Shader = shader;
     this->initRenderData();
-    app->GetContext()->Renderer->LoadSprite(this);
+    //app->GetContext()->Renderer->LoadBackGround(this);
 }
 
-Sprite::~Sprite()
+BackGround::~BackGround()
 {
     glDeleteVertexArrays(1, &this->quadVAO);
 }
 
 
-void Sprite::Draw()
+void BackGround::Draw()
 {
     // prepare transformations
     this->m_Shader.Use();
@@ -39,20 +39,20 @@ void Sprite::Draw()
     glBindVertexArray(0);
 }
 
-void Sprite::initRenderData()
+void BackGround::initRenderData()
 {
     // configure VAO/VBO
     unsigned int VBO;
 
     float vertices[] = {
-	//pos       //tex
-	0.0f, 1.0f, 0.0f, 1.0f,
-	1.0f, 0.0f, 1.0f, 0.0f,
-	0.0f, 0.0f, 0.0f, 0.0f,
+    //pos       //tex
+    0.0f, 1.0f, 0.0f, 1.0f,
+    1.0f, 0.0f, 1.0f, 0.0f,
+    0.0f, 0.0f, 0.0f, 0.0f,
 
-	0.0f, 1.0f, 0.0f, 1.0f,
-	1.0f, 1.0f, 1.0f, 1.0f,
-	1.0f, 0.0f, 1.0f, 0.0f
+    0.0f, 1.0f, 0.0f, 1.0f,
+    1.0f, 1.0f, 1.0f, 1.0f,
+    1.0f, 0.0f, 1.0f, 0.0f
     };
 
     glGenVertexArrays(1, &this->quadVAO);

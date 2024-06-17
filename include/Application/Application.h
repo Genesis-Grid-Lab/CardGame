@@ -1,5 +1,7 @@
 #pragma once
 #include "AppInterface.h"
+#include "Graphics/Background.h"
+#include "Graphics/test.h"
 
 class Application : public AppInterface
 {
@@ -14,6 +16,7 @@ public:
 	// register callbacks
 	RegisterCallbacks();
 
+	TRACE("STARTSCENE");
 	//start scene
 	StartScene();
     }
@@ -21,6 +24,7 @@ public:
     // runs application main loop
     void RunContext(bool showFrame)
     {
+      TRACE("RUNCONTEXT");
 	// application main loop
 	while(m_Context->Window->PollEvents())
 	{
@@ -59,4 +63,6 @@ private:
     void RenderScene();
     // start scene
     void StartScene();
+	BackGround *back;
+	SpriteRenderer  *Renderer;
 };
