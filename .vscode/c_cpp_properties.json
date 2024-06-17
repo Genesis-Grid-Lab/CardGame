@@ -5,20 +5,8 @@
                 "${workspaceFolder}/CardGame/include",
                 "${workspaceFolder}/CardGame/src",
                 "${workspaceFolder}/include",
-                "C:/Users/pnesm/.conan/data/spdlog/1.12.0/_/_/package/7a4b7dbecf529c983055e2bf9c7700819db975cc/include",
-                "C:/Users/pnesm/.conan/data/glm/cci.20230113/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include",
-                "C:/Users/pnesm/.conan/data/assimp/5.2.2/_/_/package/04fcb331da2a765606f2d5ffb7309933bf55c509/include",
-                "C:/Users/pnesm/.conan/data/entt/3.12.2/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include",
-                "C:/Users/pnesm/.conan/data/glfw/3.3.8/_/_/package/87788707645a6a7a0bda278a5f55360eeefe8ff3/include",
-                "C:/Users/pnesm/.conan/data/glew/2.2.0/_/_/package/187c86e330f71652b242085ff4304d46863f17ab/include",
-                "C:/Users/pnesm/.conan/data/fmt/10.2.1/_/_/package/2c52a23dc25833dd4323e8144302393f0061b96b/include",
-                "C:/Users/pnesm/.conan/data/stb/cci.20230920/_/_/package/9d3d9aac798392dbe5b8ddad56d332bc432631ac/include",
-                "C:/Users/pnesm/.conan/data/physx/4.1.1/_/_/package/8e8a34c295af0a12656bba6c79c07c7be0827a70/include",
-                "C:/Users/pnesm/.conan/data/lua/5.4.6/_/_/package/164640aad040835ac89882393a96d89200694f04/include",
-                "C:/Users/pnesm/.conan/data/sol2/3.3.1/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include",
-                "C:/Users/pnesm/.conan/data/yaml-cpp/0.8.0/_/_/package/bf9ec17af5844bd8d3cc139070000dc26fc5f076/include",
-                "C:/Users/pnesm/.conan/data/magic_enum/0.9.5/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include",
-                "C:/Users/pnesm/.conan/data/glad/0.1.36/_/_/build/ddbd0650ac2f2d0259758fa39134856e7a5bd959/include"
+                "C:/Users/pnesm/.conan/data/sdl/2.30.3/_/_/build/2f3b145eb5f57dcaae43f0089013b88989fa5d40/src/include"
+                
             ],
             "configurationProvider": "ms-vscode.cmake-tools",
             "defines": [
