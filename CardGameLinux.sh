@@ -2,7 +2,9 @@
 
 # Check for Genesis file
 
-if [-d "./CardGame"]; then
+directory="./CardGame"
+
+if [ -d "$directory" ]; then
     echo "Folder exists."
 else
     sudo python3 -m venv ./CardGame
@@ -18,15 +20,15 @@ target="Targets/$1"
 
 # activate python env
 
-source ./Cardgame/bin/activate
+source ./CardGame/bin/activate
 
 #install conan dependencies
 
-conan install . --install-folder $target --build missing -s build_type=$1 -c tools.system.package_manager:sudo=True -c tools.system.package_manager:mode=install
+#conan install . --install-folder $target --build missing -s build_type=$1 -c tools.system.package_manager:sudo=True -c tools.system.package_manager:mode=install
 
 # generate cmake build files
 
-cmake -S . -B $target -DCMAKE_BUILD_TYPE=$1 -DCMAKE_TOOLCHAIN_FILE="conanbuildinfo.cmake"
+cmake -S . -B $target -DCMAKE_BUILD_TYPE=$1 #-DCMAKE_TOOLCHAIN_FILE="conanbuildinfo.cmake"
 
 # compile cmake build files
 

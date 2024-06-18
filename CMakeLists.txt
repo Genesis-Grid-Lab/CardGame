@@ -21,7 +21,8 @@ project(CardGame)
 file(GLOB_RECURSE sources ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 file(GLOB_RECURSE headers ${CMAKE_CURRENT_SOURCE_DIR}/inlucde/*.h)
 
-#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL2)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL_image)
 
 add_executable(${PROJECT_NAME} ${sources} ${headers})
 
@@ -29,7 +30,8 @@ add_executable(${PROJECT_NAME} ${sources} ${headers})
 #include directories
 target_include_directories(${PROJECT_NAME} PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/include
-  #${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL2/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL_image/include
   ${CONAN_INCLUDE_DIRS}
 )
 
@@ -40,7 +42,8 @@ target_link_directories(${PROJECT_NAME} PUBLIC
 
 #link libraries
 target_link_libraries(${PROJECT_NAME} PUBLIC
-  #glfw
+  SDL2
+  SDL2_image
   ${CONAN_LIBS}
 )
 
