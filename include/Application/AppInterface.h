@@ -48,7 +48,7 @@ public:
     std::vector<Object*> deadObjects;
     for(auto object : render->mObjects){
       if(object->GetState() == Object::EDead){
-	deadObjects.emplace_back(object);
+	      deadObjects.emplace_back(object);
       }
     }
 
@@ -86,8 +86,7 @@ public:
 	    selectedRect = NULL;	    
 	    for (auto &object : render->mObjects){
 	      object->IsSelected = false;
-	      SDL_Log("up selected: %d", object->IsSelected);
-	      break;	      
+	      SDL_Log("up selected: %d", object->IsSelected);	      
 	    }
 	  }
 	break;
@@ -96,13 +95,13 @@ public:
 	  {
 	    leftMouseButtonDown = true;	    
 	      for (auto &object : render->mObjects){
-		if(SDL_PointInRect(&mousePos, &object->mSComponent->mRect) && object->Selectable){
-		  object->IsSelected = true;
-		  selectedRect = &object->mSComponent->mRect;
-		  clickOffset.x = mousePos.x - object->mSComponent->mRect.x;
-		  clickOffset.y = mousePos.y - object->mSComponent->mRect.y;
-		  SDL_Log("down selected: %s\n selected?: %d", object->id.c_str(), object->IsSelected);
-		  break;
+		      if(SDL_PointInRect(&mousePos, &object->mSComponent->mRect) && object->Selectable){
+		    object->IsSelected = true;
+		    selectedRect = &object->mSComponent->mRect;
+		    clickOffset.x = mousePos.x - object->mSComponent->mRect.x;
+		    clickOffset.y = mousePos.y - object->mSComponent->mRect.y;
+		    SDL_Log("down selected: %s\n selected?: %d", object->id.c_str(), object->IsSelected);
+		  
 		}
 	    }
 	    //SDL_Log("mouse down clickoffsetx: %s", clickOffset.x);

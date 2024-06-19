@@ -21,10 +21,17 @@ project(CardGame)
 file(GLOB_RECURSE sources ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 file(GLOB_RECURSE headers ${CMAKE_CURRENT_SOURCE_DIR}/inlucde/*.h)
 
+
+if(UNIX)
+add_executable(${PROJECT_NAME} ${sources} ${headers})
+endif(UNIX)
+
+if(WIN32)
+add_executable(${PROJECT_NAME} WIN32 ${sources} ${headers})
+endif(WIN32)
+
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL2)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL_image)
-
-add_executable(${PROJECT_NAME} ${sources} ${headers})
 
 
 #include directories
@@ -32,7 +39,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/include
   ${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL2/include
   ${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL_image/include
-  ${CONAN_INCLUDE_DIRS}
+  #${CONAN_INCLUDE_DIRS}
 )
 
 # link directories
@@ -43,8 +50,9 @@ target_link_directories(${PROJECT_NAME} PUBLIC
 #link libraries
 target_link_libraries(${PROJECT_NAME} PUBLIC
   SDL2
+  SDL2main
   SDL2_image
-  ${CONAN_LIBS}
+  #${CONAN_LIBS}
 )
 
 # copy resources

@@ -5,13 +5,13 @@
                 "${workspaceFolder}/CardGame/include",
                 "${workspaceFolder}/CardGame/src",
                 "${workspaceFolder}/include",
-                "C:/Users/pnesm/.conan/data/sdl/2.30.3/_/_/build/2f3b145eb5f57dcaae43f0089013b88989fa5d40/src/include"
+                "${workspaceFolder}/vendor/SDL2/include",
+                "${workspaceFolder}/vendor/SDL_image/include"
                 
             ],
             "configurationProvider": "ms-vscode.cmake-tools",
             "defines": [
-                "GEN_EXPORT",
-                "GEN_ENABLE_LOG"
+                
             ],
             "intelliSenseMode": "${default}",
             "cppStandard": "c++17",
