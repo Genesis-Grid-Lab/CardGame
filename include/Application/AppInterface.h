@@ -64,7 +64,52 @@ public:
       case SDL_QUIT:
 	mIsRunning = false;
 	break;
+      case SDL_MOUSEMOTION:
+	mousePos = {event.motion.x, event.motion.y};
+	if(leftMouseButtonDown && selectedRect != NULL){
+	  selectedRect->x = mousePos.x - clickOffset.x;
+	  selectedRect->y = mousePos.y - clickOffset.y;
+	  Vector2 pos = Vector2(mousePos.x, mousePos.y);
+	  //SDL_Log("x: %d", selectedRect->x);
+	  for (auto &object : render->mObjects){
+	    if(object->Selectable && object->IsSelected){
+	      object->SetPosition(pos);
+	      SDL_Log("selectd: %d", object->IsSelected);
+	    }
+	  }
+	}
+	break;
+      case SDL_MOUSEBUTTONUP:
+	if(leftMouseButtonDown && event.button.button == SDL_BUTTON_LEFT)
+	  {
+	    leftMouseButtonDown = false;
+	    selectedRect = NULL;	    
+	    for (auto &object : render->mObjects){
+	      object->IsSelected = false;
+	      SDL_Log("up selected: %d", object->IsSelected);
+	      break;	      
+	    }
+	  }
+	break;
+      case SDL_MOUSEBUTTONDOWN:
+	if(!leftMouseButtonDown && event.button.button == SDL_BUTTON_LEFT)
+	  {
+	    leftMouseButtonDown = true;	    
+	      for (auto &object : render->mObjects){
+		if(SDL_PointInRect(&mousePos, &object->mSComponent->mRect) && object->Selectable){
+		  object->IsSelected = true;
+		  selectedRect = &object->mSComponent->mRect;
+		  clickOffset.x = mousePos.x - object->mSComponent->mRect.x;
+		  clickOffset.y = mousePos.y - object->mSComponent->mRect.y;
+		  SDL_Log("down selected: %s\n selected?: %d", object->id.c_str(), object->IsSelected);
+		  break;
+		}
+	    }
+	    //SDL_Log("mouse down clickoffsetx: %s", clickOffset.x);
+	  }
+	break;
       }
+      
     }
 
     const Uint8* state = SDL_GetKeyboardState(NULL);
@@ -98,4 +143,8 @@ public:
   float deltaTime;
   bool mIsRunning;
   SDL_Event event;
+  SDL_Point mousePos;
+  bool leftMouseButtonDown = false;
+  SDL_Rect* selectedRect = NULL;
+  SDL_Point clickOffset;
 };  

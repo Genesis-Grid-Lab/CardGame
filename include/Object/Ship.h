@@ -9,8 +9,10 @@ class Ship : public Object
   Ship(AppInterface* app)
     :Object(app)
     {
-      SpriteComponent* sc = new SpriteComponent(this, 150);
-      sc->SetTexture(app->render->GetTexture("Assets/Ship.png"));
+      mSComponent = new SpriteComponent(this, 150);
+      mSComponent->SetTexture(app->render->GetTexture("Assets/Ship.png"));
+      id = "ship";
+      Selectable = true;
 
       InputComponent* ic = new InputComponent(this);
       ic->SetForwardKey(SDL_SCANCODE_W);

@@ -22,8 +22,8 @@ bool Render::Init(){
 void Render::Draw(){
   SDL_SetRenderDrawColor(mRenderer, 0, 0, 255, 255);
   SDL_RenderClear(mRenderer);
-  for (auto sprite : mSprites){
-    sprite->Draw(mRenderer);
+  for (auto object : mObjects){
+    object->mSComponent->Draw(mRenderer);
   }
   SDL_RenderPresent(mRenderer);
 }

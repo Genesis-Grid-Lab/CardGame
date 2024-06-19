@@ -36,6 +36,8 @@ public:
   void SetState(State state) {mState = state;}
 
   class AppInterface* GetApp() { return AppIn;}
+  
+  bool IsSelected = false;
 private:
   State mState;
   Vector2 mPosition;
@@ -43,4 +45,8 @@ private:
   float mRotation;
   std::vector<class Component*> mComponents;
   class AppInterface* AppIn;
+public:
+  class SpriteComponent* mSComponent = NULL;
+  std::string id;
+  bool Selectable = false;
 };

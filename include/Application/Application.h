@@ -28,4 +28,6 @@ private:
   //virtual void GenerateOutput() override;
   void LoadData();
   class Ship* mShip;
+  class Ship* ship2;
+  class BackGround* bg;
 };
