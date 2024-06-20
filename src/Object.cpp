@@ -1,6 +1,6 @@
 #include "Object/Object.h"
 #include "Application/AppInterface.h"
-#include "Object/Component.h"
+#include "Component/Component.h"
 
 Object::Object(AppInterface* app)
   :mState(EActive), mPosition(Vector2::Zero), mScale(1.0f),mRotation(0.0f), AppIn(app)

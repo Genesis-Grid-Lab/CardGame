@@ -23,7 +23,10 @@ void Render::Draw(){
   SDL_SetRenderDrawColor(mRenderer, 0, 0, 255, 255);
   SDL_RenderClear(mRenderer);
   for (auto object : mObjects){
-    object->mSComponent->Draw(mRenderer);
+    if(object->mDComponent != nullptr)
+      object->mDComponent->Draw(mRenderer);
+    if(object->mSComponent != nullptr)
+      object->mSComponent->Draw(mRenderer);
   }
   SDL_RenderPresent(mRenderer);
 }

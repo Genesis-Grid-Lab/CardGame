@@ -1,4 +1,4 @@
-#include "Object/Component.h"
+#include "Component/Component.h"
 #include "Object/Object.h"
 
 Component::Component(Object* owner, int updateOrder)

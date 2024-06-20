@@ -47,6 +47,8 @@ private:
   class AppInterface* AppIn;
 public:
   class SpriteComponent* mSComponent = NULL;
+  class DropComponent* mDComponent = NULL;
   std::string id;
   bool Selectable = false;
+  SDL_Rect mRect;
 };

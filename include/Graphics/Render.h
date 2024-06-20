@@ -1,7 +1,8 @@
 #pragma once
 #include "Core/Config.h"
 #include "Object/Object.h"
-#include "Object/SpriteComponent.h"
+#include "Component/SpriteComponent.h"
+#include "Component/DropComponent.h"
 
 class Render
 {

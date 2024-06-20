@@ -1,6 +1,6 @@
 #pragma once
 #include "Object/Object.h"
-#include "Object/InputComponent.h"
+#include "Component/InputComponent.h"
 #include "Application/AppInterface.h"
 
 class Ship : public Object

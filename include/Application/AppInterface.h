@@ -2,8 +2,7 @@
 #include "Window/Window.h"
 #include "Graphics/Render.h"
 #include "Object/Object.h"
-#include "Object/Component.h"
-#include "Object/SpriteComponent.h"
+#include "Component/Component.h"
 
 class AppInterface
 {
@@ -83,8 +82,26 @@ public:
 	if(leftMouseButtonDown && event.button.button == SDL_BUTTON_LEFT)
 	  {
 	    leftMouseButtonDown = false;
-	    selectedRect = NULL;	    
+	    selectedRect = NULL;
+      objCount = 0;	    
 	    for (auto &object : render->mObjects){
+        if(object->IsSelected)
+        {
+          for (auto &drop : render->mObjects)
+          {
+            if(drop->mDComponent != nullptr)
+            {
+              if(SDL_PointInRect(&mousePos, &drop->mRect))
+              {
+                object->SetPosition(drop->GetPosition());    
+              }
+              else
+              {
+                object->SetPosition(startPos);
+              }
+            }
+          }
+        }
 	      object->IsSelected = false;
 	      SDL_Log("up selected: %d", object->IsSelected);	      
 	    }
@@ -95,11 +112,15 @@ public:
 	  {
 	    leftMouseButtonDown = true;	    
 	      for (auto &object : render->mObjects){
-		      if(SDL_PointInRect(&mousePos, &object->mSComponent->mRect) && object->Selectable){
-		    object->IsSelected = true;
-		    selectedRect = &object->mSComponent->mRect;
-		    clickOffset.x = mousePos.x - object->mSComponent->mRect.x;
-		    clickOffset.y = mousePos.y - object->mSComponent->mRect.y;
+		      if(SDL_PointInRect(&mousePos, &object->mRect) && object->Selectable){
+            if(objCount == 0){
+		          object->IsSelected = true;
+              objCount = 1;
+            }
+		    selectedRect = &object->mRect;
+		    clickOffset.x = mousePos.x - object->mRect.x;
+		    clickOffset.y = mousePos.y - object->mRect.y;
+        startPos = object->GetPosition();
 		    SDL_Log("down selected: %s\n selected?: %d", object->id.c_str(), object->IsSelected);
 		  
 		}
@@ -143,7 +164,10 @@ public:
   bool mIsRunning;
   SDL_Event event;
   SDL_Point mousePos;
+private:
   bool leftMouseButtonDown = false;
   SDL_Rect* selectedRect = NULL;
   SDL_Point clickOffset;
+  int objCount = 0;
+  Vector2 startPos;
 };  

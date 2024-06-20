@@ -1,5 +1,5 @@
 #pragma once
-#include "Object/MoveComponent.h"
+#include "Component/MoveComponent.h"
 #include "Object/Object.h"
 
 class InputComponent : public MoveComponent

@@ -1,5 +1,5 @@
 #pragma once
-#include "Object/Component.h"
+#include "Component.h"
 
 class SpriteComponent : public Component
 {
@@ -15,7 +15,6 @@ public:
   int GetTexHeight() const { return mTexHeight;}
   int GetTexWidth() const { return mTexWidth;}
 
-  SDL_Rect mRect;
  protected:
   SDL_Texture* mTexture;
   int mDrawOrder, mTexHeight, mTexWidth;
