@@ -10,7 +10,7 @@ class Ship : public Object
     :Object(app)
     {
       mSComponent = new SpriteComponent(this, 150);
-      mSComponent->SetTexture(app->render->GetTexture("Assets/Ship.png"));
+      mSComponent->SetTexture(app->render->GetTexture("Assets/CardAsset/Standard/solitaire/individuals/club/1_club.png"));
       id = "ship";
       Selectable = true;
 

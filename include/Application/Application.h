@@ -28,7 +28,7 @@ private:
   //virtual void GenerateOutput() override;
   void LoadData();
   class DropTest* drop;
-  class Ship* mShip;
-  class Ship* ship2;
+  class Card* mCard2;
+  class Card* mCard1;
   class BackGround* bg;
 };

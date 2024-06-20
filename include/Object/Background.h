@@ -10,7 +10,9 @@ public:
     :Object(app)
     {
       mSComponent = new SpriteComponent(this, 1);
-      mSComponent->SetTexture(app->render->GetTexture("Assets/images/green.png"));
+      mSComponent->SetTexture(app->render->GetTexture("Assets/CardAsset/Backgrounds/background_3.png"));
+      SetRotation(Math::PiOver2);
+      SetPosition(Vector2(640, 360));
       
     }
 
