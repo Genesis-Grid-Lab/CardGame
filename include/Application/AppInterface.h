@@ -8,7 +8,7 @@ class AppInterface
 {
 public:
   AppInterface(){
-    window = new Window("CardGame", 100, 100, 1280, 720);
+    window = new Window("CardGame", 100, 100, APP_WIDTH, APP_HEIGHT);
     render = new Render(window->GetSDLWindow());
 
     mTicksCount = 0;
@@ -58,83 +58,6 @@ public:
   }
 
   virtual void OnProcessInput(){
-    while(SDL_PollEvent(&event)){
-      switch(event.type){
-      case SDL_QUIT:
-	mIsRunning = false;
-	break;
-      case SDL_MOUSEMOTION:
-	mousePos = {event.motion.x, event.motion.y};
-	if(leftMouseButtonDown && selectedRect != NULL){
-	  selectedRect->x = mousePos.x - clickOffset.x;
-	  selectedRect->y = mousePos.y - clickOffset.y;
-	  Vector2 pos = Vector2(mousePos.x, mousePos.y);
-	  //SDL_Log("x: %d", selectedRect->x);
-	  for (auto &object : render->mObjects){
-	    if(object->Selectable && object->IsSelected){
-	      object->SetPosition(pos);
-	      //SDL_Log("selectd: %d", object->IsSelected);
-	    }
-	  }
-	}
-	break;
-      case SDL_MOUSEBUTTONUP:
-	if(leftMouseButtonDown && event.button.button == SDL_BUTTON_LEFT)
-	  {
-	    leftMouseButtonDown = false;
-	    selectedRect = NULL;
-      objCount = 0;	    
-	    for (auto &object : render->mObjects){
-	      if(object->IsSelected)
-		{
-		  for (auto &drop : render->mObjects)
-		    {
-		      if(drop->mDComponent != nullptr)
-			{
-			  if(SDL_PointInRect(&mousePos, &drop->mRect))
-			    {
-			      movePos += 110;
-			      object->SetPosition(Vector2(movePos,drop->GetPosition().y));
-			      SDL_Log("movePos2: %d", movePos);
-			    }
-			  else
-			    {
-			      object->SetPosition(startPos);
-			    }
-			}
-		    }
-		}
-	      object->IsSelected = false;
-	      SDL_Log("up selected: %d", object->IsSelected);	      
-	    }
-	  }
-	break;
-      case SDL_MOUSEBUTTONDOWN:
-	if(!leftMouseButtonDown && event.button.button == SDL_BUTTON_LEFT)
-	  {
-	    leftMouseButtonDown = true;	    
-	      for (auto &object : render->mObjects){
-		      if(SDL_PointInRect(&mousePos, &object->mRect) && object->Selectable){
-			if(objCount == 0){
-		          object->IsSelected = true;
-			  objCount = 1;
-			}
-			selectedRect = &object->mRect;
-			clickOffset.x = mousePos.x - object->mRect.x;
-			clickOffset.y = mousePos.y - object->mRect.y;
-			startPos = object->GetPosition();
-			SDL_Log("down selected: %s\n selected?: %d", object->id.c_str(), object->IsSelected);
-		  
-		      }
-		     
-	      }
-	      //SDL_Log("mouse down clickoffsetx: %s", clickOffset.x);
-	  }
-	break;
-      }
-      
-    }
-
     const Uint8* state = SDL_GetKeyboardState(NULL);
 
     if(state[SDL_SCANCODE_ESCAPE]){
@@ -168,10 +91,5 @@ public:
   SDL_Event event;
   SDL_Point mousePos;
 private:
-  bool leftMouseButtonDown = false;
-  SDL_Rect* selectedRect = NULL;
-  SDL_Point clickOffset;
-  int objCount = 0;
-  Vector2 startPos;
-  int movePos = 340;
+  
 };  

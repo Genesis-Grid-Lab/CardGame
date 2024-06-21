@@ -9,3 +9,5 @@
 #include <string>
 #include <unordered_map>
 
+#define APP_WIDTH 1280
+#define APP_HEIGHT 720

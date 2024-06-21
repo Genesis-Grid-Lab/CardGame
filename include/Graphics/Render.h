@@ -96,6 +96,7 @@ public:
       }
     return tex;
   }
+  SDL_Renderer* GetRenderer() const { return mRenderer;}
 private:
   SDL_Window* mWindow;
   SDL_Renderer* mRenderer;
