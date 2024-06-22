@@ -25,6 +25,9 @@ void Render::Draw(){
   for (auto object : mObjects){
     if(object->mDComponent != nullptr)
       object->mDComponent->Draw(mRenderer);
+
+    object->ObjDraw();
+    
     if(object->mSComponent != nullptr)
       object->mSComponent->Draw(mRenderer);
   }

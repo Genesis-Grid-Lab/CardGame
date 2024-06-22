@@ -1,8 +1,10 @@
 #include "Application/Application.h"
+#include "CardMath.h"
 #include "Object/Deck.h"
 #include "Object/Background.h"
 #include "Object/PlayerHand.h"
 #include "Object/Table.h"
+#include "Object/Confirmation.h"
 
 void Application::OnProcessInput(){
   while(SDL_PollEvent(&event)){
@@ -35,6 +37,23 @@ void Application::LoadData(){
   mTable = new Table(this);
   mDeck = new Deck(this);
   
+  mDeck->ShuffleCards();
+  SDL_Log("debug");
+  for(auto &card : render->mObjects)
+  {
+	SDL_Log("card: %s fin2", card->id.c_str());
+  }
+
+  	std::random_device rd; 
+	std::mt19937 g(rd()); 
+	// Shuffle the vector 
+	std::random_shuffle(render->mObjects.begin(), render->mObjects.end());
+	std::shuffle(render->mObjects.begin(), render->mObjects.end(), g);
+	for(auto &card : render->mObjects)
+  {
+	SDL_Log("card: %s fin1", card->id.c_str());
+  }
+  
   //mCard1->SetPosition(Vector2(512.0f, 384.0f));
   //mShip->SetRotation(Math::PiOver2);
   //mCard2->SetPosition(Vector2(100.0f, 384.0f));
@@ -47,100 +66,58 @@ void Application::MouseUp()
 	  {
 	    leftMouseButtonDown = false;
 	    selectedRect = NULL;
-      objCount = 0;	    
+	    objCount = 0;	    
 	    for (auto &object : render->mObjects){
-	      if(object->IsSelected)
-		{
-		  for (auto &drop : render->mObjects)
-		    {
-		      if(drop->mDComponent != nullptr)
-			{
-			  if(drop->id == "Table")
-			    {
-            if(SDL_PointInRect(&mousePos, &drop->mRect))
-            {
-              //TablePos += 115;
-              switch(mTable->mCount)
-              {
-                case 0:
-                  object->SetPosition(Vector2(mTable->Place1.x, mTable->Place1.y));
-                  mTable->mCount += 1;
-                  break;
-                case 1:
-                  object->SetPosition(Vector2(mTable->Place2.x, mTable->Place2.y));
-                  mTable->mCount += 1;
-                  break;
-                case 2:
-                  object->SetPosition(Vector2(mTable->Place3.x, mTable->Place3.y));
-                  mTable->mCount += 1;
-                  break;
-                case 3:
-                  object->SetPosition(Vector2(mTable->Place4.x, mTable->Place4.y));
-                  mTable->mCount += 1;
-                  break;
-                case 4:
-                  object->SetPosition(Vector2(mTable->Place5.x, mTable->Place5.y));
-                  mTable->mCount += 1;
-                  break;
-                case 5:
-                  object->SetPosition(Vector2(mTable->Place6.x, mTable->Place6.y));
-                  mTable->mCount += 1;
-                  break;
-                case 6:
-                  object->SetPosition(Vector2(mTable->Place7.x, mTable->Place7.y));
-                  mTable->mCount += 1;
-                  break;
-                case 7:
-                  object->SetPosition(Vector2(mTable->Place8.x, mTable->Place8.y));
-                  mTable->mCount += 1;
-                  break;
-              }
-            }            
-			      SDL_Log("movePos2: %d", TablePos);
-			    }
-          else if(drop->id == "Hand")
-          {
-            if(SDL_PointInRect(&mousePos, &drop->mRect))
-            {
-              //HandPos += 115;
-              switch(Hand->mCount)
-              {
-                case 0:
-                  object->SetPosition(Vector2(Hand->Place1.x, Hand->Place1.y));
-                  Hand->mCount += 1;
-                  break;
-                case 1:
-                  object->SetPosition(Vector2(Hand->Place2.x, Hand->Place2.y));
-                  Hand->mCount += 1;
-                  break;
-                case 2:
-                  object->SetPosition(Vector2(Hand->Place3.x, Hand->Place3.y));
-                  Hand->mCount += 1;
-                  break;
-                case 3:
-                  object->SetPosition(Vector2(Hand->Place4.x, Hand->Place4.y));
-                  Hand->mCount += 1;
-                  break;
-              }
-            }
-            else
-            {
-              object->SetPosition(startPos);
-            }
-            SDL_Log("movePos2: %d", HandPos);
-          }
-			    else
-			    {
-			      object->SetPosition(startPos);
-			    }
+		//SDL_Log("cards: %d", object->id.c_str());
+			for(auto &drop : render->mObjects){
+				if(object->IsSelected)
+				{
+					//if(drop->mDComponent != NULL){
+						SDL_Log("in rect");
+						for (auto &tablePlace : mTable->Places)
+							{
+							
+							for(auto &handPlace : Hand->Places)
+								{
+									if(object->checkCollision(handPlace->mRect) && objCount == 0)
+									{			  
+										objCount = 1;
+										object->SetPosition(Vector2(handPlace->GetPosition().x, handPlace->GetPosition().y));
+									//object->Select
+									}
+									objCount = 0;
+
+									if(object->checkCollision(tablePlace->mRect) && objCount == 0)
+									{
+										objCount = 1;
+										object->SetPosition(Vector2(tablePlace->GetPosition().x, tablePlace->GetPosition().y));
+										//object->Selectable = false;
+										SDL_Log("tablex: %d\n tabley: %d", tablePlace->mRect.x, tablePlace->mRect.y);
+										//Confirmation();
+									}
+									objCount = 0;
+
+									if(!object->checkCollision(tablePlace->mRect) && !object->checkCollision(handPlace->mRect) && objCount == 0)
+									{
+										//object->SetPosition(startPos);
+										//SDL_Log("no collision");
+									}									
+									
+								}
+									
+							}
+
+					//}					
+				
+				}
 			}
-		    }
-		}
+			    
 	      object->IsSelected = false;
-	      SDL_Log("up selected: %d", object->IsSelected);	      
+	      //SDL_Log("up selected: %d", object->IsSelected);
 	    }
 	  }
 }
+
 
 void Application::MouseDown()
 {
@@ -157,7 +134,7 @@ void Application::MouseDown()
 			clickOffset.x = mousePos.x - object->mRect.x;
 			clickOffset.y = mousePos.y - object->mRect.y;
 			startPos = object->GetPosition();
-			SDL_Log("down selected: %s\n selected?: %d", object->id.c_str(), object->IsSelected);
+			//SDL_Log("down selected: %s\n selected?: %d", object->id.c_str(), object->IsSelected);
 		  
 		      }
 		     
@@ -181,4 +158,9 @@ void Application::MouseMotion()
 	    }
 	  }
 	}
+}
+
+void Application::Confirmation()
+{
+	confirm = new class Confirmation(this);
 }

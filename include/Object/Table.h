@@ -1,7 +1,9 @@
 #pragma once
+#include "CardMath.h"
 #include "Object.h"
 #include "Application/AppInterface.h"
 #include "Component/DropComponent.h"
+#include "Place.h"
 
 class Table : public Object
 {
@@ -14,22 +16,31 @@ public:
             id = "Table";
             mRect.h = 288;
 
-            Place1.x = 480;
-           Place1.y = GetPosition().y - 72;
-           Place2.x = 585;
-           Place2.y = GetPosition().y - 72;
-           Place3.x = 690;
-           Place3.y = GetPosition().y - 72;
-           Place4.x = 795;
-           Place4.y = GetPosition().y - 72;
-           Place5.x = 480;
-           Place5.y = GetPosition().y + 149 - 72;
-           Place6.x = 585;
-           Place6.y = GetPosition().y + 149 - 72;
-           Place7.x = 690;
-           Place7.y = GetPosition().y + 149 - 72;
-           Place8.x = 795;
-           Place8.y = GetPosition().y + 149 - 72;
+            Place1 = new Place(app);
+            Place1->SetPosition(Vector2(480, GetPosition().y - 72));
+        
+
+            Place2 = new Place(app);
+            Place2->SetPosition(Vector2(585 , GetPosition().y - 72));            
+            
+            Place3 = new Place(app);
+            Place3->SetPosition(Vector2(690 , GetPosition().y - 72));
+           
+           Place4 = new Place(app);
+           Place4->SetPosition(Vector2(795, GetPosition().y - 72));           
+           
+           Place5 = new Place(app);
+           Place5->SetPosition(Vector2(480 , GetPosition().y + 149  - 72));           
+           
+            Place6 = new Place(app);
+            Place6->SetPosition(Vector2(585, GetPosition().y + 149 - 72));           
+           
+            Place7 = new Place(app);
+            Place7->SetPosition(Vector2(690 , GetPosition().y + 149 - 72));           
+           
+            Place8 = new Place(app);
+            Place8->SetPosition(Vector2(795 , GetPosition().y + 149 - 72));           
+           
            Places.emplace_back(Place1);
            Places.emplace_back(Place2);
            Places.emplace_back(Place3);
@@ -50,8 +61,20 @@ public:
 
     }
 
-    std::vector<SDL_Rect> Places;
-    SDL_Rect Place1, Place2, Place3, Place4, Place5, Place6, Place7, Place8;
+   void ObjDraw() override
+  {
+    
+  }
+
+    std::vector<Place*> Places;
+    Place* Place1;
+    Place* Place2;
+    Place* Place3; 
+    Place* Place4;
+    Place* Place5;
+    Place* Place6;
+    Place* Place7;
+    Place* Place8;
     AppInterface* mApp;
     int mCount = 0;
 };

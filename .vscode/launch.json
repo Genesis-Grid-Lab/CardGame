@@ -18,7 +18,7 @@
             "request": "launch",
             "name": "Editor Linux",
             "miDebuggerPath": "/usr/bin/gdb",
-            "cwd": "/home/nesmy/GenDev/Targets/Debug/bin",
+            "cwd": "${workspaceFolder}/Targets/Debug/bin",
             "program": "${workspaceFolder}/Targets/Debug/bin/CardGame",
         },
     ]

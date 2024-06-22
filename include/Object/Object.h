@@ -36,6 +36,51 @@ public:
   void SetState(State state) {mState = state;}
 
   class AppInterface* GetApp() { return AppIn;}
+  virtual void ObjDraw() {}
+  bool checkCollision(SDL_Rect rect)
+  {
+    //the sides of the rectangles
+    int leftA, leftB;
+    int rightA, rightB;
+    int topA, topB;
+    int bottomA, bottomB;
+
+    // calculate the sides of rect A
+    leftA = mRect.x;
+    rightA = mRect.x + mRect.w;
+    topA = mRect.y;
+    bottomA = mRect.y + mRect.h;
+
+    // calculate the side of rect B
+    leftB = rect.x;
+    rightB = rect.x + rect.w;
+    topB = rect.y;
+    bottomB = rect.y + rect.h;
+
+    //If any of the sides from A are outside of B
+    if( bottomA <= topB )
+    {
+        return false;
+    }
+
+    if( topA >= bottomB )
+    {
+        return false;
+    }
+
+    if( rightA <= leftB )
+    {
+        return false;
+    }
+
+    if( leftA >= rightB )
+    {
+        return false;
+    }
+
+    //If none of the sides from A are outside B
+    return true;
+  }
   
   bool IsSelected = false;
 private:

@@ -2,11 +2,13 @@
     "configurations": [
         {
             "includePath": [
-                "${workspaceFolder}/CardGame/include",
-                "${workspaceFolder}/CardGame/src",
+                "/home/nesmy/Playground/CardGame/include",
+                "${workspaceFolder}/src",
                 "${workspaceFolder}/include",
                 "${workspaceFolder}/vendor/SDL2/include",
-                "${workspaceFolder}/vendor/SDL_image/include"
+                "/home/nesmy/Playground/CardGame/vendor/SDL2/include",
+                "${workspaceFolder}/vendor/SDL_image/include",
+                "/home/nesmy/Playground/CardGame/vendor/SDL_image/include"
                 
             ],
             "configurationProvider": "ms-vscode.cmake-tools",

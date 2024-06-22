@@ -30,10 +30,12 @@ private:
   void MouseUp();
   void MouseDown();
   void MouseMotion();
+  void Confirmation();
   class PlayerHand* Hand;
   class Table* mTable;
   class Deck* mDeck;
   class BackGround* bg;
+  class Confirmation* confirm;
   bool leftMouseButtonDown = false;
   SDL_Rect* selectedRect = NULL;
   SDL_Point clickOffset;
